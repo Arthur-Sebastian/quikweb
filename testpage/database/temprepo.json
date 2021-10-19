@@ -1,0 +1,12 @@
+{
+	"pageTemplates": [
+	{
+		"id": "item",
+		"src": "/templates/item.html"
+	},
+	{
+		"id": "header",
+		"src": "/templates/header.html"
+	}
+	]
+}
