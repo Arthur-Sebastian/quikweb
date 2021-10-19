@@ -1,0 +1,8 @@
+{
+	"pageTemplates": [
+	{
+		"id": "container",
+		"src": "/templates/container.html"
+	}
+	]
+}

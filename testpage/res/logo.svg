@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="74mm"
+   height="25mm"
+   viewBox="0 0 74 25"
+   version="1.1"
+   id="svg8"
+   inkscape:version="1.0.2 (e86c870879, 2021-01-15)"
+   sodipodi:docname="logo1.svg">
+  <defs
+     id="defs2">
+    <rect
+       x="58.916271"
+       y="147.32785"
+       width="41.423363"
+       height="19.734894"
+       id="rect12" />
+  </defs>
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="2.7322437"
+     inkscape:cx="130.4776"
+     inkscape:cy="97.930508"
+     inkscape:document-units="mm"
+     inkscape:current-layer="layer1"
+     inkscape:document-rotation="0"
+     showgrid="false"
+     objecttolerance="20"
+     inkscape:pagecheckerboard="true"
+     height="25mm"
+     inkscape:window-width="1458"
+     inkscape:window-height="1016"
+     inkscape:window-x="50"
+     inkscape:window-y="27"
+     inkscape:window-maximized="0" />
+  <metadata
+     id="metadata5">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <text
+       xml:space="preserve"
+       id="text10"
+       style="font-size:10.5833px;line-height:1.25;font-family:'Fira Mono';-inkscape-font-specification:'Fira Mono';white-space:pre;shape-inside:url(#rect12);" />
+    <text
+       xml:space="preserve"
+       style="font-size:12.346px;line-height:1.25;font-family:'Fira Mono';-inkscape-font-specification:'Fira Mono';fill:#00d9d1;fill-opacity:1;stroke-width:0.308649"
+       x="11.451249"
+       y="13.393971"
+       id="text18"><tspan
+         sodipodi:role="line"
+         x="11.451249"
+         y="13.393971"
+         style="fill:#00d9d1;fill-opacity:1;stroke-width:0.308649"
+         id="tspan20">QUIKWEB</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:6.58452px;line-height:1.25;font-family:'Fira Mono';-inkscape-font-specification:'Fira Mono';fill:#b3b3b3;stroke-width:0.308649"
+       x="22.146679"
+       y="21.417585"
+       id="text26"><tspan
+         sodipodi:role="line"
+         id="tspan24"
+         x="22.146679"
+         y="21.417585"
+         style="font-size:6.58452px;fill:#b3b3b3;stroke-width:0.308649">DEMO IMG</tspan></text>
+  </g>
+</svg>

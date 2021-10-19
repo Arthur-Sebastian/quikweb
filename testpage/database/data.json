@@ -1,0 +1,52 @@
+{
+	"pageContents": [
+	{
+		"template": "header",
+		"title": "Demonstrative header",
+		"logo_url": "/res/logo.svg"
+	},
+	{
+		"template": "container",
+		"children": [ 
+		{
+			"template": "item",
+			"title": "Second title!",
+			"content": "Text number two."
+		},
+		{
+			"template": "item",
+			"title": "Third title!",
+			"content": "Text number three."
+		},
+		{
+			"template": "item",
+			"title": "Fourth title!",
+			"content": [
+			"Text number four.<br>",
+			"This item is a<br>",
+			"multiline JSON content presentation!"
+			]
+		},
+		{
+			"template": "item",
+			"title": "Fifth title!",
+			"content": "Text number five."
+		},
+		{
+			"template": "item",
+			"title": "Sixth title!",
+			"content": "Text number six."
+		},
+		{
+			"template": "item",
+			"title": "Seventh title!",
+			"content": [
+			"Text number seven.<br>",
+			"This item is a pretentious<br>",
+			"multiline JSON content presentation!"
+			]
+		}
+		]
+	}
+	]
+}
