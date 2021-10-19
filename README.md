@@ -6,7 +6,7 @@ The following paragraphs describe the setup and usage of QuikWeb.
 ### Introduction to QuikWeb file system:
 QuikWeb uses two types of JSON databases for its purposes:
 - page content database;
-- page template repository.
+- page template repository;
 The former describes contextual page elements (or blocks) of which your web
 page is constructed, giving them their content and pointing to HTML templates
 which should be used to build a given block.
