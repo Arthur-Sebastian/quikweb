@@ -7,16 +7,24 @@ The following paragraphs describe the setup and usage of QuikWeb.
 QuikWeb uses two types of JSON databases for its purposes:
 - page content database;
 - page template repository;
+
 The former describes contextual page elements (or blocks) of which your web
 page is constructed, giving them their content and pointing to HTML templates
 which should be used to build a given block.
+
 The latter is a collection of JSON objects pointing at actual HTML template
 files, and giving the given template an identifier.
+
 QuikWeb's algorithm is simple: if a block points at a template of a given
 identifier, and this identifier is found in template repository, the page
 block is constructed using this template.
 
 ### Preparing the Page Content Database:
+
+significant JSON key names:
+- template: used to point at template identifier
+- children: an array of child objects to replace [[children]] template tag
+
 1) start your JSON file with an array named: 'pageContents'
 2) fill the array with block objects
 
