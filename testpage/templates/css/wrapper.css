@@ -1,0 +1,14 @@
+.document-wrapper
+{
+	width: var(--desktoppagewidth);
+	margin: 0 auto;
+	margin-top: 5rem;
+}
+
+@media screen and (max-width: 1024px)
+{
+	.document-wrapper
+	{
+		width: 100%;
+	}
+}
