@@ -67,6 +67,7 @@ async function buildPage(pageDatabaseArg, templateRepositoriesArg) {
 	}
 	//load all template repositories and their content
 	let templateRepository = new Array();
+	let styleSheetRepository = new Array();
 	for(let i = 0, n = templateRepositories.length; i < n ; i++) {
 		const templateRepoDownload = await getResource(templateRepositories[i], 'JSON');
 		if(templateRepoDownload === null) continue;
@@ -84,9 +85,24 @@ async function buildPage(pageDatabaseArg, templateRepositoriesArg) {
 			//check for duplicates
 			if(findTemplate(templateObject.type))
 				templateStorage.push(templateObject);
+			//read the css dependencies
+			if(!'css' in templateReferences[i]) continue;
+			//array of urls or single url
+			let cssDependencies = templateReferences[i].css;
+			if(Array.isArray(cssDependencies)) {
+				for(const dependency of cssDependencies)
+					if(!styleSheetRepository.includes(dependency)) styleSheetRepository.push(dependency);
+			}
+			else if(!styleSheetRepository.includes(cssDependencies))
+				styleSheetRepository.push(cssDependencies);
 		}
 	}
 	//hopefully everything is loaded, proceed to rendering
+	let cacheBlocker = Math.random(); 
+	for(const stylesheetURL of styleSheetRepository) {
+		document.getElementById('main').innerHTML 
+		+= `<link rel=\"stylesheet\" href=\"${stylesheetURL}\?${cacheBlocker}">`; 
+	}
 	document.getElementById('root').innerHTML = 
 	contentStorage.map(renderObject).join('');
 	//mark arrays for GC
