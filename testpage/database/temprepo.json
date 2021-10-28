@@ -1,12 +1,25 @@
 {
 	"pageTemplates": [
 	{
-		"id": "item",
-		"src": "/templates/item.html"
+		"id": "header",
+		"src": "/templates/header.html",
+		"css": [
+		"/templates/css/main.css",
+		"/templates/css/header.css"
+		]
 	},
 	{
-		"id": "header",
-		"src": "/templates/header.html"
+		"id": "banner",
+		"src": "/templates/banner.html",
+		"css": [
+		"/templates/css/banner.css",
+		"/templates/css/buttons.css"
+		]
+	},
+	{
+		"id": "wrapper",
+		"src": "/templates/wrapper.html",
+		"css": "/templates/css/wrapper.css"
 	}
 	]
 }

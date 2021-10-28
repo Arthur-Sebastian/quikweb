@@ -1,0 +1,52 @@
+:root
+{
+	--globalfont: Roboto;
+	--desktoppagewidth: 75%;
+	--transitionlength: 0.25s;
+
+	--themecolor: #00dbc2;
+	--themecolordark: #008071;
+	--uicolor: white;
+	--textcolor: black;
+
+	--backgroundaccent: #3d3d3d;
+	--backgroundmain: white;
+
+	--backgroundfooter: #afafaf;
+	--textfooter: #111111;
+
+	--standardborder: 0.2rem solid var(--uicolor);
+}
+
+@font-face
+{
+	font-family: Roboto;
+	src: url(/res/font/Roboto-Medium.ttf);
+	font-weight: normal;
+}
+
+@font-face
+{
+	font-family: Roboto;
+	src: url(/res/font/Roboto-Bold.ttf);
+	font-weight: bold;
+}
+
+html, body
+{
+	margin: 0;
+	font-family: var(--globalfont);
+	background-color: var(--backgroundmain);
+}
+
+html
+{
+	scroll-behavior: smooth;
+}
+
+.root
+{
+	margin: 0;
+	width: 100%;
+	height: 100%;
+}
