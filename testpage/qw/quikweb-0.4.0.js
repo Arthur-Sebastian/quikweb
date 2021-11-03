@@ -51,16 +51,16 @@ async function buildPage(pageDatabaseArg, templateRepositoriesArg) {
 		else {
 			templateStorage.push({
 				type: 'errnotice',
-				template: 
-				'<div style="text-align: center; margin: 2rem;">\n'
+				template:
+				'<div style="text-align: center; margin: 5rem;">\n'
 				+'<img src=[[image_url]]><h1>[[info]]</h1>\n</div>'
 			});
 			document.getElementById('root').innerHTML = 
 			renderObject({
 				template: 'errnotice', 
-				info: '[Quikweb]<br>The page resource:<br>\"'+
-				`${pageDatabases[i]}\"<br>could not be loaded.`,
-				image_url: '/res/404.svg'
+				info: 	'Requested page resource<br>'+
+					'could not be loaded.',
+				image_url: '/qw/res/404.svg'
 			});
 			return;
 		}
@@ -98,14 +98,14 @@ async function buildPage(pageDatabaseArg, templateRepositoriesArg) {
 		}
 	}
 	//hopefully everything is loaded, proceed to rendering
-	let cacheBlocker = Math.random(); 
+	let cacheBlocker = Math.random();
 	for(const stylesheetURL of styleSheetRepository) {
 		document.getElementById('main').innerHTML 
-		+= `<link rel=\"stylesheet\" href=\"${stylesheetURL}\?${cacheBlocker}">`; 
+		+= `<link rel=\"stylesheet\" href=\"${stylesheetURL}\?${cacheBlocker}">`;
 	}
 	document.getElementById('root').innerHTML = 
 	contentStorage.map(renderObject).join('');
-	//mark arrays for GC
+	//mark arrays for GC 
 	templateStorage = null;
 	contentStorage = null;
 	templateCache = null;

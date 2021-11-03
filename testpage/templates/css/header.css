@@ -1,11 +1,7 @@
 .header
 {
-	display: flex;
-	flex-flow: row nowrap;
-	margin: auto;
-	justify-content: space-between;
 	text-align: center;
-	background-color: #404040;
+	background-color: #000000;
 	width: 100%;
 	height: 5rem;
 	position: fixed;
@@ -13,13 +9,41 @@
 	z-index: 5;
 }
 
-.header > img
+.header__flex
 {
-	justify-self: flex-start;
+	height: 100%;
+	display: flex;
+	flex-flow: row nowrap;
+	margin: auto;
+	justify-content: space-between;
 }
 
-.header > h1
+.header__logo
 {
-	margin-right: 2rem;
+	justify-self: flex-start;
+	padding: 1rem;
+	padding-bottom: 0.7rem;
+}
+
+.header__item
+{
+	padding: 1rem;
+	margin: 0;
 	color: var(--uicolor);
+}
+
+@media screen and (min-width: 1024px) and (orientation: landscape)
+{
+	.header__flex
+	{
+		width: var(--desktoppagewidth);
+	}
+	.header__logo
+	{
+		padding-left: 0;
+	}
+	.header__item
+	{
+		padding-right: 0;
+	}
 }

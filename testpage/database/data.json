@@ -3,14 +3,14 @@
 	{
 		"template": "header",
 		"title": "Parrut",
-		"logo_url": "/res/logo.svg"
+		"logo_url": "/res/logo_qw_sub.svg"
 	},
 	{
 		"template": "wrapper",
 		"children": [
 		{
 			"template": "banner",
-			"text": "MARCEL IS A GOOD BOY",
+			"text": "PARRUT IS A GOOD BOY",
 			"buttontext": "ĆVIR",
 			"buttonmodifier": "button--bold",
 			"bannermodifier": "banner--left",
@@ -18,8 +18,8 @@
 		},
 		{
 			"template": "banner",
-			"text": "WHO'S A GOOD BIRB?",
-			"buttontext": "ME, ME!",
+			"text": "WHO'S A GOOD (BUT PICKY) BIRB?",
+			"buttontext": "YOU, YOU!",
 			"buttonmodifier": "button--bold",
 			"bannermodifier": "",
 			"style": "background-image: url(/res/papug2.jpg);"
