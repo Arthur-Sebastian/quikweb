@@ -1,14 +1,14 @@
 .document-wrapper
 {
-	width: var(--desktoppagewidth);
+	width: 100%;
 	margin: 0 auto;
 	margin-top: 5rem;
 }
 
-@media screen and (max-width: 1024px)
+@media screen and (min-width: 1024px)
 {
 	.document-wrapper
 	{
-		width: 100%;
+		width: var(--desktoppagewidth);
 	}
 }
