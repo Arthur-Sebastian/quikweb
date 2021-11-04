@@ -2,27 +2,44 @@
 	"pageContents": [
 	{
 		"template": "header",
-		"title": "Parrut",
-		"logo_url": "/res/logo_qw_sub.svg"
+		"logo_url": "/res/logo_qw_sub.svg",
+		"children": [
+		{
+			"template": "button",
+			"modifier": "button--thin header__button",
+			"text": "MENU"
+		}
+		]
 	},
 	{
 		"template": "wrapper",
 		"children": [
 		{
 			"template": "banner",
-			"text": "PARRUT IS A GOOD BOY",
-			"buttontext": "ĆVIR",
-			"buttonmodifier": "button--bold",
+			"text": "Your new website starts here.",
 			"bannermodifier": "banner--left",
-			"style": "background-image: url(/res/papug.jpg);"
+			"imgurl": "/res/banner_strips.svg",
+			"color": "#2b2b2b",
+			"children": [
+			{
+				"template": "button",
+				"modifier": "button--bold",
+				"text": "LEARN MORE"
+			}
+			]
 		},
 		{
 			"template": "banner",
-			"text": "WHO'S A GOOD (BUT PICKY) BIRB?",
-			"buttontext": "YOU, YOU!",
-			"buttonmodifier": "button--bold",
+			"text": "Responsive. Purpose driven.",
 			"bannermodifier": "",
-			"style": "background-image: url(/res/papug2.jpg);"
+			"imgurl": "",
+			"children": [
+			{
+				"template": "button",
+				"modifier": "button--bold",
+				"text": "BROWSE TEMPLATES"
+			}
+			]
 		}
 		]
 	}

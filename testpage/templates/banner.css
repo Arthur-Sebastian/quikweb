@@ -1,0 +1,48 @@
+/*
+	Common (mobile)
+*/
+
+.banner
+{
+	display: flex;
+	flex-flow: column nowrap;
+	justify-content: flex-end;
+	align-items: center;
+	text-align: center;
+	padding: 2rem;
+	width: calc(100% - 4rem);
+	height: 15rem;
+	margin: 0 auto;
+	margin-bottom: 1rem;
+	background-color: gray;
+	background-position: right;
+	background-repeat: no-repeat;
+	background-size: auto 100%;
+	color: var(--uicolor);
+	text-shadow: 0.2rem 0.2rem 0.5rem black;
+}
+
+.banner--left
+{
+	align-items: flex-start;
+	justify-content: center;
+	text-align: left;
+}
+
+.banner > .button
+{
+	margin-bottom: 2rem;
+	box-shadow: 0.2rem 0.2rem 0.5rem black;
+}
+
+/*
+	Desktop
+*/
+@media screen and (min-width: 1280px) and (orientation: landscape)
+{
+	.banner
+	{
+		height: 25rem;
+	}
+	
+}

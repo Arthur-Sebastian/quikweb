@@ -4,22 +4,27 @@
 		"id": "header",
 		"src": "/templates/header.html",
 		"css": [
-		"/templates/css/main.css",
-		"/templates/css/header.css"
+		"/templates/main.css",
+		"/templates/header.css"
 		]
 	},
 	{
 		"id": "banner",
 		"src": "/templates/banner.html",
 		"css": [
-		"/templates/css/banner.css",
-		"/templates/css/buttons.css"
+		"/templates/banner.css",
+		"/templates/buttons.css"
 		]
+	},
+	{
+		"id": "button",
+		"src": "/templates/button.html",
+		"css": "/templates/buttons.css"
 	},
 	{
 		"id": "wrapper",
 		"src": "/templates/wrapper.html",
-		"css": "/templates/css/wrapper.css"
+		"css": "/templates/wrapper.css"
 	}
 	]
 }
