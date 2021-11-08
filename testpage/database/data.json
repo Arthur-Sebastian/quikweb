@@ -2,27 +2,59 @@
 	"pageContents": [
 	{
 		"template": "header",
-		"title": "Parrut",
-		"logo_url": "/res/logo_qw_sub.svg"
+		"logo_url": "/res/logo_qw_sub.svg",
+		"children": [
+		{
+			"template": "button",
+			"modifier": "button--thin header__button",
+			"text": "MENU"
+		}
+		]
 	},
 	{
 		"template": "wrapper",
 		"children": [
 		{
 			"template": "banner",
-			"text": "PARRUT IS A GOOD BOY",
-			"buttontext": "ĆVIR",
-			"buttonmodifier": "button--bold",
-			"bannermodifier": "banner--left",
-			"style": "background-image: url(/res/papug.jpg);"
+			"text": "Your new website starts here.",
+			"subtext": "Get things done. Faster.",
+			"modifier": "banner--left",
+			"imgurl": "/res/banner_strips.svg",
+			"color": "#2b2b2b",
+			"children": [
+			{
+				"template": "button",
+				"modifier": "button--bold",
+				"text": "LEARN MORE"
+			}
+			]
+		},
+		{
+			"template": "paragraph",
+			"headline": "Client-side page building",
+			"text": [
+			"Quikweb is an all in one, client-side templating ",
+			"engine and static page builder which includes premade, ",
+			"professional looking templates for general usage. ",
+			"It incorporates templates, ",
+			"styles, and JSON formatted data to quickly fill a webpage ",
+			"with easily editable content - mitigating the danger of ",
+			"breaking the webpage during edits. "
+			]
 		},
 		{
 			"template": "banner",
-			"text": "WHO'S A GOOD (BUT PICKY) BIRB?",
-			"buttontext": "YOU, YOU!",
-			"buttonmodifier": "button--bold",
-			"bannermodifier": "",
-			"style": "background-image: url(/res/papug2.jpg);"
+			"text": "Included templates.",
+			"subtext": "Responsive. Purpose-driven.",
+			"modifier": "",
+			"imgurl": "",
+			"children": [
+			{
+				"template": "button",
+				"modifier": "button--bold",
+				"text": "BROWSE"
+			}
+			]
 		}
 		]
 	}

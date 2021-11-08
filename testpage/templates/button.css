@@ -1,0 +1,39 @@
+.button
+{
+	max-width: 15rem;
+	max-height: 2em;
+	padding: 2rem;
+	padding-top: 1rem;
+	padding-bottom: 1rem;
+	text-align: center;
+	color: var(--uicolor);
+	transition: color var(--transitionlength), border-color var(--transitionlength);
+}
+
+.button:hover
+{
+	color: var(--themecolor);
+	border-color: var(--themecolor);
+}
+
+.button:active
+{
+	color: var(--themecolordark);
+	border-color: var(--themecolordark);
+}
+
+.button--bold
+{
+	border: var(--standardborder);
+	border-radius: 0.5rem;
+	font-weight: 500;
+}
+
+.button--thin
+{
+	border: none;
+	border-bottom: var(--standardborder);
+	padding: 0;
+	padding-bottom: 0.5rem;
+	font-weight: 500;
+}
