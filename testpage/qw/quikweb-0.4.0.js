@@ -97,15 +97,18 @@ async function buildPage(pageDatabaseArg, templateRepositoriesArg) {
 				styleSheetRepository.push(cssDependencies);
 		}
 	}
-	//hopefully everything is loaded, proceed to rendering
-	let cacheBlocker = Math.random();
-	for(const stylesheetURL of styleSheetRepository) {
-		document.getElementById('main').innerHTML 
-		+= `<link rel=\"stylesheet\" href=\"${stylesheetURL}\?${cacheBlocker}">`;
-	}
+	//concatenate stylesheets into one tag
+	let compactedStylesheets = new String();
+	for(const stylesheetURL of styleSheetRepository)
+		compactedStylesheets += await getResource(stylesheetURL+`?${Math.random()}`, 'TEXT');
+	//push the concatenated stylesheets into a tag
+	document.getElementsByTagName('head')[0].innerHTML +=
+	`<style type=\"text/css\">` +
+	compactedStylesheets + '</style>';
+	//fill the page with templated content
 	document.getElementById('root').innerHTML = 
 	contentStorage.map(renderObject).join('');
-	//mark arrays for GC 
+	//mark global arrays for GC 
 	templateStorage = null;
 	contentStorage = null;
 	templateCache = null;

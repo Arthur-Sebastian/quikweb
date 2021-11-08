@@ -26,7 +26,7 @@
 {
 	border: var(--standardborder);
 	border-radius: 0.5rem;
-	font-weight: bold;
+	font-weight: 500;
 }
 
 .button--thin
@@ -35,4 +35,5 @@
 	border-bottom: var(--standardborder);
 	padding: 0;
 	padding-bottom: 0.5rem;
+	font-weight: 500;
 }

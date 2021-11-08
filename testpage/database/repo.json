@@ -1,0 +1,29 @@
+{
+	"pageTemplates": [
+	{
+		"id": "header",
+		"src": "/templates/header.html",
+		"css": "/templates/header.css"
+	},
+	{
+		"id": "wrapper",
+		"src": "/templates/wrapper.html",
+		"css": "/templates/wrapper.css"
+	},
+	{
+		"id": "banner",
+		"src": "/templates/banner.html",
+		"css": "/templates/banner.css"
+	},
+	{
+		"id": "button",
+		"src": "/templates/button.html",
+		"css": "/templates/button.css"
+	},
+	{
+		"id": "paragraph",
+		"src": "/templates/paragraph.html",
+		"css": "/templates/paragraph.css"
+	}
+	]
+}

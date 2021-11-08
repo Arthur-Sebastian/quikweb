@@ -17,7 +17,8 @@
 		{
 			"template": "banner",
 			"text": "Your new website starts here.",
-			"bannermodifier": "banner--left",
+			"subtext": "Get things done. Faster.",
+			"modifier": "banner--left",
 			"imgurl": "/res/banner_strips.svg",
 			"color": "#2b2b2b",
 			"children": [
@@ -29,15 +30,29 @@
 			]
 		},
 		{
+			"template": "paragraph",
+			"headline": "Client-side page building",
+			"text": [
+			"Quikweb is an all in one, client-side templating ",
+			"engine and static page builder which includes premade, ",
+			"professional looking templates for general usage. ",
+			"It incorporates templates, ",
+			"styles, and JSON formatted data to quickly fill a webpage ",
+			"with easily editable content - mitigating the danger of ",
+			"breaking the webpage during edits. "
+			]
+		},
+		{
 			"template": "banner",
-			"text": "Responsive. Purpose driven.",
-			"bannermodifier": "",
+			"text": "Included templates.",
+			"subtext": "Responsive. Purpose-driven.",
+			"modifier": "",
 			"imgurl": "",
 			"children": [
 			{
 				"template": "button",
 				"modifier": "button--bold",
-				"text": "BROWSE TEMPLATES"
+				"text": "BROWSE"
 			}
 			]
 		}

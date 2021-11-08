@@ -2,18 +2,27 @@
 <html lang="en">
 
 <head id="main">
-<meta charset="UTF-8">
+<meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <script src="/qw/quikweb-0.4.0.js"></script>
+<link rel="stylesheet" href="/res/css/main.css">
+<link rel="stylesheet" href="/res/css/dummies.css">
+<script>
+window.onload =
+buildPage('/database/data.json',
+	  '/database/repo.json');
+</script>
 </head>
 
-<body onload="
-buildPage(
-	'/database/data.json',
-	'/database/temprepo.json'
-);">
+<body>
 
 <div id="root">
+<div class="dummy_header"></div>
+<div class="dummy_wrapper">	
+<div class="dummy_banner">
+<noscript>Please enable JavaScript.</noscript>
+</div>
+</div>
 </div>
 
 </body>
