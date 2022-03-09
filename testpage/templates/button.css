@@ -6,25 +6,25 @@
 	padding-top: 1rem;
 	padding-bottom: 1rem;
 	text-align: center;
-	color: var(--uicolor);
+	color: var(--textlight);
 	transition: color var(--transitionlength), border-color var(--transitionlength);
 }
 
 .button:hover
 {
-	color: var(--themecolor);
-	border-color: var(--themecolor);
+	color: var(--themelight);
+	border-color: var(--themelight);
 }
 
 .button:active
 {
-	color: var(--themecolordark);
-	border-color: var(--themecolordark);
+	color: var(--themedark);
+	border-color: var(--themedark);
 }
 
 .button--bold
 {
-	border: var(--standardborder);
+	border: 0.2rem solid var(--textlight);
 	border-radius: 0.5rem;
 	font-weight: 500;
 }
@@ -32,7 +32,7 @@
 .button--thin
 {
 	border: none;
-	border-bottom: var(--standardborder);
+	border-bottom: 0.2rem solid var(--textlight);;
 	padding: 0;
 	padding-bottom: 0.5rem;
 	font-weight: 500;

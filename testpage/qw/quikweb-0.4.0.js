@@ -77,8 +77,7 @@ async function buildPage(pageDatabaseArg, templateRepositoriesArg) {
 			const html = await getResource(templateReferences[i].src, 'TEXT');
 			if(html === null) continue;
 			//build a usable template object from JSON data and store it
-			const templateObject = 
-			{
+			const templateObject = {
 				type: templateReferences[i].id,
 				template: html
 			};
