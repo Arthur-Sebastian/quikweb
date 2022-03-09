@@ -30,17 +30,82 @@
 			]
 		},
 		{
-			"template": "paragraph",
-			"headline": "Client-side page building",
+			"template": "profile",
+			"imgurl": "https://picsum.photos/300/300",
+			"header": "Lorem ipsum",
 			"text": [
-			"Quikweb is an all in one, client-side templating ",
-			"engine and static page builder which includes premade, ",
-			"professional looking templates for general usage. ",
-			"It incorporates templates, ",
-			"styles, and JSON formatted data to quickly fill a webpage ",
-			"with easily editable content - mitigating the danger of ",
-			"breaking the webpage during edits. "
+				"Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+				" Suspendisse et posuere mauris, a finibus erat. Mauris at",
+				" fermentum nisi. Etiam ut consectetur nibh, ut imperdiet risus.",
+				" Nulla pulvinar nibh at lorem ullamcorper laoreet sed ut ante. ",
+				"Proin lorem ante, malesuada nec lobortis eget, tristique id lectus."
 			]
+			
+		},
+		{
+			"template": "carousel",
+			"title": "Lorem ipsum:",
+			"children": [
+				{
+					"template": "carousel_item",
+					"linkurl": "",
+					"imgurl": "https://picsum.photos/300/300",
+					"title": "Lorem"
+				},
+				{
+					"template": "carousel_item",
+					"linkurl": "",
+					"imgurl": "https://picsum.photos/300/300",
+					"title": "Ipsum"
+				},
+				{
+					"template": "carousel_item",
+					"linkurl": "",
+					"imgurl": "https://picsum.photos/300/300",
+					"title": "Dolor"
+				},
+				{
+					"template": "carousel_item",
+					"linkurl": "",
+					"imgurl": "https://picsum.photos/300/300",
+					"title": "Sit amet"
+				},
+				{
+					"template": "carousel_item",
+					"linkurl": "",
+					"imgurl": "https://picsum.photos/300/300",
+					"title": "Consectetur"
+				}
+			]	
+		},
+		{
+			"template": "separator",
+			"text": "SECTION 1"
+		},
+		{
+			"template": "duobox",
+			"title": "Lorem ipsum",
+			"text": [
+				"Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+				" Suspendisse et posuere mauris, a finibus erat. Mauris at",
+				" fermentum nisi. Etiam ut consectetur nibh, ut imperdiet risus.",
+				" Nulla pulvinar nibh at lorem ullamcorper laoreet sed ut ante. ",
+				"Proin lorem ante, malesuada nec lobortis eget, tristique id lectus."
+			],
+			"imgurl": "https://picsum.photos/300/300"
+		},
+		{
+			"template": "duobox",
+			"modifier": "duobox--right",
+			"title": "Lorem ipsum",
+			"text": [
+				"Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+				" Suspendisse et posuere mauris, a finibus erat. Mauris at",
+				" fermentum nisi. Etiam ut consectetur nibh, ut imperdiet risus.",
+				" Nulla pulvinar nibh at lorem ullamcorper laoreet sed ut ante. ",
+				"Proin lorem ante, malesuada nec lobortis eget, tristique id lectus."
+			],
+			"imgurl": "https://picsum.photos/300/300"
 		},
 		{
 			"template": "banner",

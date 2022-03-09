@@ -24,6 +24,31 @@
 		"id": "paragraph",
 		"src": "/templates/paragraph.html",
 		"css": "/templates/paragraph.css"
+	},
+	{
+		"id": "profile",
+		"src": "/templates/profile.html",
+		"css": "/templates/profile.css"
+	},
+	{
+		"id": "separator",
+		"src": "/templates/separator.html",
+		"css": "/templates/separator.css"
+	},
+	{
+		"id": "carousel",
+		"src": "/templates/carousel.html",
+		"css": "/templates/carousel.css"
+	},
+	{
+		"id": "carousel_item",
+		"src": "/templates/carousel_item.html",
+		"css": "/templates/carousel.css"
+	},
+	{
+		"id": "duobox",
+		"src": "/templates/duobox.html",
+		"css": "/templates/duobox.css"
 	}
 	]
 }

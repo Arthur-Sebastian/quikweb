@@ -1,29 +1,28 @@
 :root
 {
 	--globalfont: Roboto;
-	--desktoppagewidth: 75%;
-	--standardmargin: 1rem;
+	--desktoppagewidth: 80rem;
 	--transitionlength: 0.25s;
 
 	/* Only for reference */
 	--bpoint_desktop: 1280px;
 	--bpoint_mobile: 900px;
 
-	--themecolor: #00dbc2;
-	--themecolordark: #008071;
-	--uicolor: white;
-	--textcolor: black;
+	--themelight: #00dbc2;
+	--themedark: #008071;
 	
-	--bannercolordark: #2b2b2b;
-	--bannercolorlight: #afafaf;
+	--textlight: white;
+	--textdark: black;
+	--textshadowdark: 0.2rem 0.2rem 0.5rem #000000;
+	--textshadowlight: 0.2rem 0.2rem 0.5rem #c0bfbc;
+	
+	--blockdark: #000000;
+	--blockmedium: #2b2b2b;
+	--blocklight: #afafaf;
 
-	--backgroundaccent: #3d3d3d;
-	--backgroundmain: white;
-
-	--backgroundfooter: #afafaf;
-	--textfooter: #111111;
-
-	--standardborder: 0.2rem solid var(--uicolor);
+	--backgrounddark: #2b2b2b;
+	--backgroundmedium: #afafaf;
+	--backgroundlight: #ffffff;
 }
 
 @font-face

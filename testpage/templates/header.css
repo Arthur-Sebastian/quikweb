@@ -1,7 +1,7 @@
 .header
 {
 	text-align: center;
-	background-color: #000000;
+	background-color: var(--blockdark);
 	width: 100%;
 	height: 5rem;
 	position: fixed;
@@ -34,7 +34,7 @@
 {
 	padding: 1rem;
 	margin: 0;
-	color: var(--uicolor);
+	color: var(--textlight);
 }
 
 .header__button
@@ -43,7 +43,7 @@
 	margin-left: 1rem;
 }
 
-@media screen and (min-width: 900px) and (orientation: landscape)
+@media screen and (min-width: 1280px) and (orientation: landscape)
 {
 	.header__flex
 	{
