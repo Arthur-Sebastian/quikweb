@@ -1,9 +1,9 @@
 # Quikweb
-## Dynamic page builder and templating engine all-in-one solution!
+## JSON-based, client side rendering framework
 
 The following paragraphs describe the setup and usage of Quikweb.
 
-### Introduction to Quikweb and its file system:
+### Introduction to Quikweb and its file structure:
 Quikweb uses two types of JSON databases for its purposes:
 - page content database;
 - page template repository;
