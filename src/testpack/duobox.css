@@ -1,0 +1,37 @@
+.duobox {
+	display: flex;
+	flex-flow: column-reverse wrap;
+	justify-content: space-between;
+}
+.duobox__tile {
+	box-sizing: border-box;
+	height: 15rem;
+	width: 100%;
+	background-position: center;
+	background-size: 100% auto;
+}
+.duobox__tile--text {
+	height: auto;
+	display: flex;
+	justify-content: flex-end;
+	flex-direction: column;
+	padding: 1rem;
+	text-align: center;
+	text-shadow: var(--textshadowlight);
+}
+
+@media screen and (min-width: 900px) and (orientation: landscape) {
+	.duobox {
+		flex-direction: row-reverse;
+	}
+	.duobox--right {
+		flex-direction: row;
+	}
+	.duobox__tile {
+		width: 50%;
+		height: 20rem;
+	}
+	.duobox__tile--text {
+		padding: 2rem;
+	}
+}

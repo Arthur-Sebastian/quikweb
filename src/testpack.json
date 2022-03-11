@@ -1,0 +1,53 @@
+{
+	"qw_templates": [
+	{
+		"id": "header",
+		"html": "./testpack/header.html",
+		"css": "./testpack/header.css"
+	},
+	{
+		"id": "wrapper",
+		"html": "./testpack/wrapper.html",
+		"css": "./testpack/wrapper.css"
+	},
+	{
+		"id": "banner",
+		"html": "./testpack/banner.html",
+		"css": "./testpack/banner.css"
+	},
+	{
+		"id": "button",
+		"html": "./testpack/button.html",
+		"css": "./testpack/button.css"
+	},
+	{
+		"id": "paragraph",
+		"html": "./testpack/paragraph.html",
+		"css": "./testpack/paragraph.css"
+	},
+	{
+		"id": "profile",
+		"html": "./testpack/profile.html",
+		"css": "./testpack/profile.css"
+	},
+	{
+		"id": "separator",
+		"html": "./testpack/separator.html",
+		"css": "./testpack/separator.css"
+	},
+	{
+		"id": "carousel",
+		"html": "./testpack/carousel.html",
+		"css": "./testpack/carousel.css"
+	},
+	{
+		"id": "carousel_item",
+		"html": "./testpack/carousel_item.html"
+	},
+	{
+		"id": "duobox",
+		"html": "./testpack/duobox.html",
+		"css": "./testpack/duobox.css"
+	}
+	]
+}

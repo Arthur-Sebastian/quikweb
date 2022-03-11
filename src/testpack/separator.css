@@ -1,0 +1,25 @@
+.separator {
+	display: flex;
+	justify-content: center;
+	align-items: middle;
+	margin: 1rem 0 1rem;
+}
+.separator__text {
+	text-align: center;
+	font-size: 1rem;
+	font-weight: lighter;
+}
+.separator__bar {
+	margin: 0 1rem 0;
+	align-self: center;
+	width: auto;
+	height: 0.1rem;
+	background-color: black;
+	flex-grow: 1;
+}
+
+@media screen and (min-width: 900px) and (orientation: landscape) {
+	.separator__text {
+		font-size: 1.5rem;
+	}
+}
