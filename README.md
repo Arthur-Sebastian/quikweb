@@ -1,6 +1,5 @@
-![Banner](img/banner_repo.svg)
-
 # Quikweb
+<img src=/img/banner_repo.svg style="width: 100%; height: auto;"></img>
 ## Simple, JSON-based website rendering framework
 
 The following paragraphs describe the setup and usage of Quikweb.
