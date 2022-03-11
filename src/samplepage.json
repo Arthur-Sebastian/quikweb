@@ -2,7 +2,7 @@
 	"qw_pagedata": [
 	{
 		"template": "header",
-		"logo_url": "/res/logo_qw_sub.svg",
+		"logo_url": "./res/logo_qw.svg",
 		"children": [
 		{
 			"template": "button",
@@ -19,7 +19,7 @@
 			"text": "Your new website starts here.",
 			"subtext": "Get things done. Faster.",
 			"modifier": "banner--left",
-			"imgurl": "/res/banner_strips.svg",
+			"imgurl": "./res/banner_strips.svg",
 			"color": "#2b2b2b",
 			"children": [
 			{

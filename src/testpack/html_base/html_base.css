@@ -1,6 +1,6 @@
 :root
 {
-	--globalfont: Roboto;
+	--globalfont: Arial;
 	--desktoppagewidth: 80rem;
 	--transitionlength: 0.25s;
 
@@ -23,27 +23,6 @@
 	--backgrounddark: #2b2b2b;
 	--backgroundmedium: #afafaf;
 	--backgroundlight: #ffffff;
-}
-
-@font-face
-{
-	font-family: Roboto;
-	src: url(/res/font/Roboto-Light.ttf);
-	font-weight: 300;
-}
-
-@font-face
-{
-	font-family: Roboto;
-	src: url(/res/font/Roboto-Medium.ttf);
-	font-weight: 500;
-}
-
-@font-face
-{
-	font-family: Roboto;
-	src: url(/res/font/Roboto-Bold.ttf);
-	font-weight: 700;
 }
 
 html, body
