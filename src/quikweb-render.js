@@ -250,7 +250,7 @@ class Builder {
 			bodyRender += this.renderBlock(block);
 		}
 		//create embedded css stylesheet
-		let embeddedCSS = new String();
+		let embeddedCSS = new String('<style type="text/css">');
 		let baseStyle = this.stylesheets.fetch("qw_html_base");
 		if(baseStyle !== 1) {
 			this.usedCSS.store(baseStyle);
@@ -262,7 +262,11 @@ class Builder {
 			});
 			embeddedCSS += css;
 		}
+		embeddedCSS += "</style>";
 		//insert render into document template
+		if(this.templates.fetch("qw_html_base") === 1) {
+			return bodyRender;
+		}
 		let pageRender = this.renderBlock({
 			template: "qw_html_base",
 			style: embeddedCSS,
