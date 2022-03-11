@@ -1,6 +1,11 @@
 {
 	"qw_templates": [
 	{
+		"id": "qw_html_base",
+		"html": "./testpack/html_base/html_base.html", 
+		"css": "./testpack/html_base/html_base.css"
+	},
+	{
 		"id": "header",
 		"html": "./testpack/header.html",
 		"css": "./testpack/header.css"

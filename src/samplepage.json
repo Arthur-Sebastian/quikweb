@@ -1,5 +1,5 @@
 {
-	"pageContents": [
+	"qw_pagedata": [
 	{
 		"template": "header",
 		"logo_url": "/res/logo_qw_sub.svg",
@@ -44,7 +44,7 @@
 		},
 		{
 			"template": "carousel",
-			"title": "Lorem ipsum QTAZ:",
+			"title": "Lorem ipsum:",
 			"children": [
 				{
 					"template": "carousel_item",
