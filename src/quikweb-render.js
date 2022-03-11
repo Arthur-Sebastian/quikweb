@@ -246,9 +246,14 @@ class Builder {
 		}
 		//start rendering every page block
 		let bodyRender = new String();
-		let embeddedCSS = new String();
 		for(const block of jsonContent.qw_pagedata) {
 			bodyRender += this.renderBlock(block);
+		}
+		//create embedded css stylesheet
+		let embeddedCSS = new String();
+		let baseStyle = this.stylesheets.fetch("qw_html_base");
+		if(baseStyle !== 1) {
+			this.usedCSS.store(baseStyle);
 		}
 		for(const sheet of this.usedCSS.content) {
 			let css = sheet.content;
@@ -257,6 +262,7 @@ class Builder {
 			});
 			embeddedCSS += css;
 		}
+		//insert render into document template
 		let pageRender = this.renderBlock({
 			template: "qw_html_base",
 			style: embeddedCSS,
