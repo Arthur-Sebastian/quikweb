@@ -1,0 +1,64 @@
+.banner
+{
+	box-sizing: border-box;
+	display: flex;
+	flex-flow: column nowrap;
+	justify-content: flex-end;
+	align-items: center;
+	text-align: center;
+	padding: 1rem;
+	padding-bottom: 2rem;
+	width: 100%;
+	height: 15rem;
+	margin: 0 auto;
+	margin-bottom: 1rem;
+	background-color: var(--blockmedium);
+	background-position: right;
+	background-repeat: no-repeat;
+	background-size: auto 100%;
+	color: var(--textlight);
+	text-shadow: var(--textshadowdark);
+	font-weight: 300;
+	font-size: 1.2rem;
+}
+.banner__header
+{
+	margin: 0;
+	margin-top: 1rem;
+	font-weight: 700;
+	font-size: 1.5em;
+}
+.banner--left
+{
+	align-items: flex-start;
+	justify-content: center;
+	text-align: left;
+}
+.banner--right
+{
+	align-items: flex-end;
+	justify-content: center;
+	text-align: right;
+}
+.banner > .button
+{
+	margin-top: 1rem;
+	box-shadow: var(--textshadowdark);
+	font-size: 1rem;
+}
+@media screen and (min-width: 900px) and (orientation: landscape)
+{
+	.banner
+	{
+		padding: 2rem;
+		padding-bottom: 4rem;
+	}
+}
+@media screen and (min-width: 1280px) and (orientation: landscape)
+{
+	.banner
+	{
+		height: 20rem;
+	}
+	
+}

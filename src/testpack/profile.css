@@ -1,0 +1,72 @@
+.profile
+{
+	height: auto;
+	max-width: 70rem;
+	margin: 1rem auto 1rem;
+	padding: auto;
+	display: flex;
+	flex-flow: column nowrap;
+	align-items: center;
+	text-align: center;
+	color: var(--textdark);
+	text-shadow: var(--textshadowlight);
+	font-weight: lighter;
+	font-size: 1.2rem;
+}
+.profile__header
+{
+	grid-area: header;
+	font-size: 1.3rem;
+	font-weight: bold;
+	margin-bottom: 0.5rem;
+}
+.profile__text
+{
+	grid-area: text;
+	padding: 1rem;
+	padding-top: 0;
+	font-size: 1rem;
+	overflow-y: hidden;
+}
+.profile__image
+{
+	width: 8rem;
+	height: 8rem;
+	grid-area: image;
+	margin: 1rem;
+	border-radius: 50%;
+	border: 0.1rem solid var(--textdark);
+}
+
+@media screen and (min-width: 900px) and (orientation: landscape)
+{
+	.profile
+	{
+		width: 85%;
+		display: grid;
+		grid-template-columns: 12rem auto 12rem;
+		grid-template-rows: auto auto;
+		grid-template-areas: 
+		"image header header"
+		"image text text";
+		text-align: left;
+	}
+	.profile__image
+	{
+		width: 10rem;
+		height: 10rem;
+	}
+	.profile__header
+	{
+		align-self: end;
+		font-size: 1.5rem;
+	}
+	.profile__text
+	{
+		margin-bottom: 1rem;
+		justify-self: start;
+		align-self: start;
+		font-size: 1.3rem;
+		padding: 0;
+	}
+}
