@@ -1,3 +1,5 @@
+![Banner](img/banner_repo.svg)
+
 # Quikweb
 ## Simple, JSON-based website rendering framework
 
