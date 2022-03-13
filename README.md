@@ -1,6 +1,6 @@
 # Quikweb
 <img src=/img/banner_repo.svg style="width: 100%; height: auto; margin: 0 auto;"></img>
-Quikweb is a simple, JSON-based Node.js framework for rendering webpages using templates.
+### Quikweb is a simple, JSON-based Node.js framework for rendering webpages using templates.
 
 ## Why?
 First of all, this project is meant mostly as a JavaScript and Node.js learning opportunity. Secondly, creating even simple webpages using templates can be a nuissance. Misplaced _<div>_ tags that break the layout, or confusing stylesheet dependencies are a real pain. This tool is meant to help with quick template insertion, and later editing without a hassle.
@@ -16,8 +16,8 @@ Where:
 - pagedata:  path to JSON page content file
 
 ### Creating page templates
-First, create a new folder inside ['/src'](/src) named "tutorialpack" and open it.<br>
-Create a new HTML file named "sample.html". This will be our template for a page element:
+First, create a new folder inside ['/src'](/src) named "tutorialpack".<br>
+Create a new HTML file named "sample.html" inside ['/src/tutorialpack'](/src). This will be our template for a page element:
 ```html
 <div class="sample">
 [[title]]
@@ -28,26 +28,30 @@ Create a new HTML file named "sample.html". This will be our template for a page
 ```
 As you can see this template has certain _[[tags]]_ inserted. These tags will be later replaced by our content.<br>
 > **IMPORTANT NOTE:** Some tags have special meaning!
+
+Tag names with special functions:
 - 'qw_template': identifies a given template, it cannot be used for user content
 - 'qw_children': renders child elements, will not render text
 - other tags beginning with 'qw_' may be used for special purposes, avoid using such tags
 
 Now with this out of the way, we want to style the element that was just created.<br>
-Create a new CSS file named "sample.css". This is the stylesheet for our element:
+Create a new CSS file named "sample.css" inside ['/src/tutorialpack'](/src). This is the stylesheet for our element:
 ```css
 .sample {
     border: 0.5rem solid black;
 }
 .sample__box {
-    background-color: #fafafa;
+    background-color: #3d3846;
     color: white;
     min-height: 10rem;
 }
 ```
 > **NOTE**: Stylesheets do not need to obey any special formatting or naming rules, and will work just fine with any content.
+Be careful, that one CSS sheet should only describe one page element. Otherwise, including one CSS sheet in many elements will result
+in those being duplicated in the final, embedded CSS sheet.
 
 The last thing we need to do is bring the styling and the template together. This is done via template pack manifests.<br>
-Create a new JSON file named "tutorialpack.json". This time place it outside the "tutorialpack" folder:
+Create a new JSON file named "tutorialpack.json" inside ['/src'](/src):
 ```json
 {
     "qw_templates": [
@@ -62,7 +66,15 @@ Create a new JSON file named "tutorialpack.json". This time place it outside the
 > **IMPORTANT NOTE:**
 'qw_id'and 'html' keys are required, a template without them is considered invalid.
 'qw_html_base' is a special template used to define the main HTML document outline.
-HTML implementation should contain exactly two tags:
+HTML implementation should contain exactly two tags: [[qw_style]] and [[qw_body]].
+
+Special keys in template pack manifests:
+- 'qw_templates': an array of template objects
+- 'qw_id': template identifier
+- 'html': reference to HTML template
+- 'css': optional reference to CSS stylesheet
+
+Special tags in 'qw_html_base' template:
 - '[[qw_style]]': will be replaced by an embedded CSS stylesheet
 - '[[qw_body]]': will be replaced by the webpage content
 
@@ -76,14 +88,14 @@ HTML implementation should contain exactly two tags:
     ->  [src/tutorialpack/]
         sample.css
         sample.html
-    -> [src/samplepack/]
+    ->	[src/samplepack/]
         ...
 ```
 
 ### Creating a website using templates
 For this part of the tutorial we will be using our newly created template pack, that was described in the previous section.
 
-Create a new JSON file named "tutorialpage.json", inside your ['/src'](/src) folder:
+Create a new JSON file named "tutorialpage.json", inside your ['/src'](/src) folder.
 ```json
 {
 	"qw_pagedata": [
@@ -97,11 +109,29 @@ Create a new JSON file named "tutorialpage.json", inside your ['/src'](/src) fol
 			"text": "another sample text of child element"
 		}
 		]
+	},
+	{
+		"qw_template": "another sample",
+		"title": "Lorem Ipsum",
+		"text": "Sample text 2"
 	}
 	]
 }
 ```
+
+As you can see, a singular page element looks like this:
+```json
+{
+	"qw_template": "another sample",
+	"title": "Lorem Ipsum",
+	"text": "Sample text 2"
+}
+```
+**You can add as many of these as you want to the "qw_pagedata" array, by separating them with commas, altering the fields to make the element display different things. If you decide to omit a tag, it will be replaced by blank space.**
+
 > **IMPORTANT NOTE:** Some keys have special meaning!
+
+JSON keys with special functions:
 - 'qw_pagedata': has to be an array, contains all page elements inside
 - 'qw_template': identifies a given template, it cannot be used for user content
 - 'qw_children': has to be an array, contains all child elements of given element
@@ -120,7 +150,7 @@ You can add however many elements you wish to display on your page, as elements 
     ->  [src/tutorialpack/]
         sample.css
         sample.html
-    -> [src/samplepack/]
+    ->	[src/samplepack/]
         ...
 ```
 ### Running the build
