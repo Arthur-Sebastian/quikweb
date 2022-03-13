@@ -1,36 +1,36 @@
 {
 	"qw_pagedata": [
 	{
-		"template": "header",
-		"logo_url": "./res/logo_qw.svg",
-		"children": [
+		"qw_template": "header",
+		"logo_url": "https://raw.githubusercontent.com/Arthur-Sebastian/quikweb/main/res/logo_qw.svg",
+		"qw_children": [
 		{
-			"template": "button",
+			"qw_template": "button",
 			"modifier": "button--thin header__button",
 			"text": "MENU"
 		}
 		]
 	},
 	{
-		"template": "wrapper",
-		"children": [
+		"qw_template": "wrapper",
+		"qw_children": [
 		{
-			"template": "banner",
+			"qw_template": "banner",
 			"text": "Your new website starts here.",
 			"subtext": "Get things done. Faster.",
 			"modifier": "banner--left",
-			"imgurl": "./res/banner_strips.svg",
+			"imgurl": "https://raw.githubusercontent.com/Arthur-Sebastian/quikweb/main/res/banner_strips.svg",
 			"color": "#2b2b2b",
-			"children": [
+			"qw_children": [
 			{
-				"template": "button",
+				"qw_template": "button",
 				"modifier": "button--bold",
 				"text": "LEARN MORE"
 			}
 			]
 		},
 		{
-			"template": "profile",
+			"qw_template": "profile",
 			"imgurl": "https://picsum.photos/300/300",
 			"header": "Lorem ipsum",
 			"text": [
@@ -43,35 +43,35 @@
 			
 		},
 		{
-			"template": "carousel",
+			"qw_template": "carousel",
 			"title": "Lorem ipsum:",
-			"children": [
+			"qw_children": [
 				{
-					"template": "carousel_item",
+					"qw_template": "carousel_item",
 					"linkurl": "",
 					"imgurl": "https://picsum.photos/300/300",
 					"title": "Lorem"
 				},
 				{
-					"template": "carousel_item",
+					"qw_template": "carousel_item",
 					"linkurl": "",
 					"imgurl": "https://picsum.photos/300/300",
 					"title": "Ipsum"
 				},
 				{
-					"template": "carousel_item",
+					"qw_template": "carousel_item",
 					"linkurl": "",
 					"imgurl": "https://picsum.photos/300/300",
 					"title": "Dolor"
 				},
 				{
-					"template": "carousel_item",
+					"qw_template": "carousel_item",
 					"linkurl": "",
 					"imgurl": "https://picsum.photos/300/300",
 					"title": "Sit amet"
 				},
 				{
-					"template": "carousel_item",
+					"qw_template": "carousel_item",
 					"linkurl": "",
 					"imgurl": "https://picsum.photos/300/300",
 					"title": "Consectetur"
@@ -79,11 +79,11 @@
 			]	
 		},
 		{
-			"template": "separator",
+			"qw_template": "separator",
 			"text": "SECTION 1"
 		},
 		{
-			"template": "duobox",
+			"qw_template": "duobox",
 			"title": "Lorem ipsum",
 			"text": [
 				"Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
@@ -95,7 +95,7 @@
 			"imgurl": "https://picsum.photos/300/300"
 		},
 		{
-			"template": "duobox",
+			"qw_template": "duobox",
 			"modifier": "duobox--right",
 			"title": "Lorem ipsum",
 			"text": [
@@ -108,14 +108,14 @@
 			"imgurl": "https://picsum.photos/300/300"
 		},
 		{
-			"template": "banner",
+			"qw_template": "banner",
 			"text": "Included templates.",
 			"subtext": "Responsive. Purpose-driven.",
 			"modifier": "",
 			"imgurl": "",
-			"children": [
+			"qw_children": [
 			{
-				"template": "button",
+				"qw_template": "button",
 				"modifier": "button--bold",
 				"text": "BROWSE"
 			}
