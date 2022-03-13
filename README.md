@@ -1,62 +1,144 @@
 # Quikweb
-## JSON-based, client side rendering framework
+<img src=/img/banner_repo.svg style="width: 100%; height: auto; margin: 0 auto;"></img>
+Quikweb is a simple, JSON-based Node.js framework for rendering webpages using templates.
 
-The following paragraphs describe the setup and usage of Quikweb.
+## Why?
+First of all, this project is meant mostly as a JavaScript and Node.js learning opportunity. Secondly, creating even simple webpages using templates can be a nuissance. Misplaced _<div>_ tags that break the layout, or confusing stylesheet dependencies are a real pain. This tool is meant to help with quick template insertion, and later editing without a hassle.
 
-### Introduction to Quikweb and its file structure:
-Quikweb uses two types of JSON databases for its purposes:
-- page content database;
-- page template repository;
+## Usage
+Before getting started make sure you have a working intallation of Node.js.
+You can find the rendering script in the ['/src'](/src) directory.<br>
+To run it, simply execute:
+> node quikweb-render.js templates pagedata
 
-The former describes contextual page elements (or blocks) of which your web
-page is constructed, giving them their content and pointing to HTML templates
-which should be used to build a given block.
+Where:
+- templates: path to a template pack manifest
+- pagedata:  path to JSON page content file
 
-The latter is a collection of JSON objects pointing at actual HTML template
-files, and giving the given template an identifier.
+### Creating page templates
+First, create a new folder inside ['/src'](/src) named "tutorialpack" and open it.<br>
+Create a new HTML file named "sample.html". This will be our template for a page element:
+```html
+<div class="sample">
+[[title]]
+<div class="sample__box">
+[[text]]
+[[qw_children]]
+</div></div>
+```
+As you can see this template has certain _[[tags]]_ inserted. These tags will be later replaced by our content.<br>
+> **IMPORTANT NOTE:** Some tags have special meaning!
+- 'qw_template': identifies a given template, it cannot be used for user content
+- 'qw_children': renders child elements, will not render text
+- other tags beginning with 'qw_' may be used for special purposes, avoid using such tags
 
-Quikweb's algorithm is simple: if a block points at a template of a given
-identifier, and this identifier is found in template repository, the page
-block is constructed using this template.
+Now with this out of the way, we want to style the element that was just created.<br>
+Create a new CSS file named "sample.css". This is the stylesheet for our element:
+```css
+.sample {
+    border: 0.5rem solid black;
+}
+.sample__box {
+    background-color: #fafafa;
+    color: white;
+    min-height: 10rem;
+}
+```
+> **NOTE**: Stylesheets do not need to obey any special formatting or naming rules, and will work just fine with any content.
 
-### Preparing page templates:
-1) create a new HTML file
-2) write your HTML 'div' as usual to represent a block on a page
-3) to indicate where Quikweb should insert block data, surround _tag name_
-   with double, square brackets like so: [[_tag name_]]. The engine will
-   fill this spot with respective data pulled from the JSON key for any block
-   using this template (see: 'Preparing the Page Content Database' and 'Preparing
-   the Page Template Repository')
-4) IMPORTANT NOTE: Some tag names have special meaning!
-   - 'template': this block key will indicate a template identifier, and inserting
-     it into the template will result in it being replaced by block template name.
-   - 'children': this tag will be replaced with nested page blocks. Attempting
-     to use this key in block database to hold text will result in a JavaScript exception.
+The last thing we need to do is bring the styling and the template together. This is done via template pack manifests.<br>
+Create a new JSON file named "tutorialpack.json". This time place it outside the "tutorialpack" folder:
+```json
+{
+    "qw_templates": [
+        {
+            "qw_id": "sample",
+            "html": "tutorialpack/sample.html",
+            "css": "tutorialpack/sample.css"
+        }
+    ]
+}
+```
+> **IMPORTANT NOTE:**
+'qw_id'and 'html' keys are required, a template without them is considered invalid.
+'qw_html_base' is a special template used to define the main HTML document outline.
+HTML implementation should contain exactly two tags:
+- '[[qw_style]]': will be replaced by an embedded CSS stylesheet
+- '[[qw_body]]': will be replaced by the webpage content
 
-### Preparing the Page Template Repository:
-1) start your JSON file with an array named: 'pageTemplates'
-2) fill the array with objects containing 2 keys each:
-   - 'type': defining template identifier
-   - 'src': providing a path to HTML template file
-3) add as many template references as you need
-4) provide the JSON file path to import all the templates into a given HTML web page!
+**Your directory structure should now look something like this:**
+```
+->  [src/]
+    quikweb-render.js
+    samplepack.json
+    samplepage.json
+    tutorialpack.json
+    ->  [src/tutorialpack/]
+        sample.css
+        sample.html
+    -> [src/samplepack/]
+        ...
+```
 
-### Preparing the Page Content Database:
-1) start your JSON file with an array named: 'pageContents'
-2) fill the array with block objects naming their keys:
-   - 'template': defining which template (by identifier from template repository) 
-     to use for this page block
-   - (optional) 'children': any number of nested block objects to be rendered in 
-     place of [[children]] tag in the template
-   - '_tag name_': content of this key will replace [[_tag name_]] tag in the template
-     file assigned. These content keys can be defined as an array of strings, to hold e.g. big paragraphs.
-3) add as many nested, or regularly inserted objects to appear on your page!
+### Creating a website using templates
+For this part of the tutorial we will be using our newly created template pack, that was described in the previous section.
 
-### Preparing your HTML document:
-1) include 'quikweb-x.x.x.js' script in your html document
-2) add 'onload="buildPage(a,b);"' to your page 'body' tag
-3) replace 'a' with an array of/or path(s) to page content databases
-4) replace 'b' with an array of/or path(s) to page template repositories
-5) add a div of class 'root' to the body element to hold dynamic content
-6) provided that you have followed all the steps correctly, your page should
-   be dynamically loaded by the Quikweb engine.
+Create a new JSON file named "tutorialpage.json", inside your ['/src'](/src) folder:
+```json
+{
+	"qw_pagedata": [
+	{
+		"qw_template": "sample",
+		"title": "Lorem Ipsum",
+		"text": "Sample text",
+		"qw_children": [
+		{
+			"qw_template": "sample",
+			"text": "another sample text of child element"
+		}
+		]
+	}
+	]
+}
+```
+> **IMPORTANT NOTE:** Some keys have special meaning!
+- 'qw_pagedata': has to be an array, contains all page elements inside
+- 'qw_template': identifies a given template, it cannot be used for user content
+- 'qw_children': has to be an array, contains all child elements of given element
+- other keys beginning with 'qw_' may be used for special purposes, avoid using those
+
+You can add however many elements you wish to display on your page, as elements of 'qw_pagedata' array, or as elements of 'qw_children' array in a given element. Keep in mind, that your template will need to have a '[[qw_children]]' tag placed in it for child objects to be rendered.
+
+**Your directory structure should now look something like this:**
+```
+->  [src/]
+    quikweb-render.js
+    samplepack.json
+    samplepage.json
+    tutorialpack.json
+    tutorialpage.json
+    ->  [src/tutorialpack/]
+        sample.css
+        sample.html
+    -> [src/samplepack/]
+        ...
+```
+### Running the build
+Now all that is left to do is to run our build. Navigate to the ['/src'](/src) directory, and run:
+> node quikweb-render.js tutorialpack.json tutorialpage.json
+
+After the build finishes, you will be notified about the output file that has been created. By default all output files are stored in '/src/render'. This is the output that you should expect when opening the 'index.html' file in your browser of choice:<br>
+<img src=/img/tutorial_output.png style="width: 100%; height: auto; margin: 0 auto;"></img>
+
+## More examples
+You can find a fuller, included webpage under ['src/samplepage.json'](/src) and a corresponding template pack under ['src/samplepack.json'](/src). Run the build, observe the output, and feel free to browse the json files to learn more. You can also contact me if you wish to ask any questions. Happy web development!
+
+## Roadmap for the future
+
+Among the things I would like to see improved in the future are:
+- publication of Quikweb as an npm package
+- better handling of file paths
+- automatic page resource (imagery/fonts) collection
+- referencing of template packs in page data files
+- JavaScript embedding and integration with HTML id's
+
