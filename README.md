@@ -183,13 +183,14 @@ After the build finishes, you will be notified about the output file that has be
 
 <img src=/img/tutorial_output.png style="width: 100%; height: auto; margin: 0 auto;"></img>
 
+### Step 3: Exploring
 Feel free to play around with the files you have just created. Try adding more elements of the same type to the page, creating new templates and placing new elements on the site using them. If you feel adventurous you can even try changing the HTML output template to really get the hang of using the framework. 
 
 > 📙 **IMPORTANT NOTE:**<br>
 Remember to re-run the build everytime you make any changes, as they will not show up otherwise!
 
 ## Included templates and examples
-You can find a full, included webpage ['src/samplepage.json'](src/samplepage.json) and a corresponding template pack ['src/samplepack.json'](src/samplepack.json). Run the build, observe the output, and browse the included files to learn more. You can also contact me if you wish to ask any questions. The **'samplepack'** template package can be freely used for non-commercial, evaluation purposes.
+You can find a full, included webpage ['src/samplepage.json'](src/samplepage.json) and a corresponding template pack ['src/samplepack.json'](src/samplepack.json). Run the build, observe the output, and browse the included files to learn more. You can also contact me if you wish to ask any questions. The **'samplepack'** template package can be freely used for evaluation purposes.
 
 **Happy web development!**
 
