@@ -1,0 +1,22 @@
+{
+	"name": "quikweb",
+	"version": "0.6.0",
+	"description": "Webpage framework and renderer.",
+	"keywords": [
+		"framework",
+		"json",
+		"html"
+	],
+	"bin": "quikweb-render.js",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/Arthur-Sebastian/quikweb.git"
+	},
+	"bugs": "https://github.com/Arthur-Sebastian/quikweb/issues",
+	"author": {
+		"name": "Artur Sebastian Miller",
+		"url": "arthur-sebastian.github.io"
+	},
+	"homepage": "https://github.com/Arthur-Sebastian/quikweb#readme",
+	"license": "GPL-2.0-or-later"
+}
