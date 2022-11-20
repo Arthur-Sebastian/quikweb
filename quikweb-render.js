@@ -1,346 +1,134 @@
+#!/usr/bin/env node
+"use strict";
+
 const fs = require("fs");
+const Cache = require("./modules/qw-cache.js");
+const Builder = require("./modules/qw-builder.js");
+
 const args = process.argv;
 
-/*
-	Configuration
-*/
-const version = "v0.5.0";
-const outputdir = "./render";
-const usageInfo = 
-	"Invalid parameters.\n" +
-	"Usage:\n\tnode quikweb-render.js templates pagedata\n" +
-	"Where:\n\ttemplates - path to a template repository\n" +
-	"\tpagedata  - path to JSON page data file";
-const defaultDoc = 
-	"<!DOCTYPE html>\n<html lang='en'>\n" +
-	"<head>\n[[qw_style]]\n</head>\n" +
-	"<body>\n[[qw_body]]\n</body>\n</html>";
-const idKey = "qw_id";
-const htmlKey = "html";
-const cssKey = "css";
-const templateKey = "qw_template";
-const childrenKey = "qw_children";
+const qwVersion = "v0.6.0";
+const qwUsage = `
+Invalid parameters.
+Usage:
+	node quikweb-render.js <templatepack> <pagedata>
+	<templatepack> - component pack directory
+	<pagedata>     - page source data`;
 
-/*
-	Implementation
-*/
-class File {
+const qwOutDir = "./render";
+const qwOutFile = `${qwOutDir}/index.html`;
 
-	static pathudef = "File: Path is undefined.";
-	
-	constructor(path) {
-		this.path = path;
-	}
-	
-	read() {
-		if(!this.path) {
-			console.log(this.pathudef);
-			return 1;
-		}
-		try {
-			return fs.readFileSync(this.path, 'utf8');
-		} catch (exc) {
-			console.log(`File: Failed to read '${this.path}'.`);
-			return 1;
+
+function finalizeBuild(result, worker)
+{
+	if (worker.infoCollector.length !== 0) {
+		console.log("[BUILD]");
+		for (const info of worker.infoCollector) {
+			console.log(`\t${info}`);
 		}
 	}
-	
-	json() {
-		let cnt = this.read();
-		if(cnt === 1){
-			return 1;
-		}
-		try {
-			return JSON.parse(cnt);
-		} catch (exc) {
-			console.log(
-			`File: Parsing '${this.path}' as JSON failed:\n${exc}`
-			);
-			return 1;
+	if (worker.warningCollector.length !== 0) {
+		console.log("[WARNINGS]");
+		for (const warning of worker.warningCollector) {
+			console.log(`\t${warning}`);
 		}
 	}
-	
-	write(content) {
-		if(!this.path) {
-			console.log(this.pathudef);
-			return 1;
-		}
-		try {
-			return fs.writeFileSync(this.path, content);
-		} catch (exc) {
-			console.log(`File: Failed to write '${this.path}'.`);
-			return 1;
-		}
+
+	console.log("[FINALIZE]");
+	if (result.error) {
+		console.log(`\tBuild failed!\n\tCause: ${result.error}`);
+	}
+	else if (result.success) {
+		console.log("\tBuild success!")
+		console.log(`\tOutput written to '${qwOutFile}'`);
 	}
 }
 
-class Cache {
 
-	constructor() {
-		this.content = new Array();
-	}
-	
-	clear() {
-		this.content = new Array();
-	}
-	
-	get empty() {
-		return (this.content.length == 0);
-	}
-	
-	store(object) {
-		//not a cacheable object
-		if(!("id" in object)) {
-			return 2;
-		}
-		//search for duplicates
-		for(const element of this.content) {
-			if(element.id === object.id) {
-				return 1;
-			}
-		}
-		//object is unique, store
-		this.content.push(object);
-		return 0;
-	}
-	
-	fetch(id) {
-		//search for existent object
-		for(const element of this.content) {
-			if(element.id === id) {
-				return element;
-			}
-		}
-		return 1;
-	}
-	
-}
-
-class Builder {
-
-	constructor() {
-		this.templates = new Cache();
-		this.stylesheets = new Cache();
-		this.usedCSS = new Cache();
-	}
-	
-	warn(what) {
-		console.log("Warning: " + what);
-	}
-	
-	info(what) {
-		console.log("Info: " + what);
-	}
-	
-	arraySum(array) {
-		return array.reduce( (p, c) => {
-			return p + c;
-		});
-	}
-
-	validateTemplateObject(object) {
-		return !(
-			(typeof object === "object") &&
-			(idKey in object) &&
-			(htmlKey in object)
-		);
-	}
-	
-	validatePageBlock(block) {
-		if(!(typeof block === "object")) {
-			return 1;
-		}
-		return !(templateKey in block);
-	}
-	
-	importTemplate(template) {
-		//validate template object
-		if(this.validateTemplateObject(template)) {
-			this.warn(
-			"A template has missing or invalid tags, skipping."
-			);
-			return 1;
-		}
-		//cache main html template
-		let file = new File(template[htmlKey]);
-		let html = file.read();
-		if(html === 1) {
-			return 2;
-		}
-		console.log(
-		`Info: Importing template '${template[idKey]}'.`
-		);
-		this.templates.store({
-			id: template[idKey],
-			content: html
-		});
-		//cache associated css stylesheets
-		if(!(cssKey in template)) {
-			this.info(
-			`Template '${template[idKey]}'` +
-			"does not import a CSS stylesheet."
-			);
-			return 0;
-		}
-		file.path = template[cssKey];
-		let css = file.read();
-		if(css === 1) {
-			return 2;
-		}
-		this.stylesheets.store({
-			id: template[idKey],
-			content: css
-		});
-	}
-	
-	importTemplateRepo(repo) {
-		//load template repository
-		let file = new File(repo);
-		let jsonContent = file.json();		
-		if(jsonContent === 1) {
-			return 1;
-		}
-		//check for basic repo validity
-		if(!("qw_templates" in jsonContent) || !Array.isArray(jsonContent.qw_templates)) {
-			console.log(
-			`Repository '${repo}' could not be loaded:\n` +
-			"Repository does not contain a 'qw_templates' array."
-			);
-			return 2;
-		}
-		//cache complete templates for usage
-		for(const template of jsonContent.qw_templates) {
-			this.importTemplate(template);
-		}
-	}
-	
-	renderBlock(block) {
-		//check if data is a valid object
-		if(this.validatePageBlock(block)) {
-			this.warn(
-			"Page block has missing or invalid tags, skipping."
-			);
-			return "";
-		}
-		//find the given template
-		let template = this.templates.fetch(block[templateKey]);
-		if(template === 1) {
-			this.warn(
-			`Page block uses non-existent template '${block[templateKey]}', skipping.`
-			);
-			return "";
-		}
-		this.info(`Rendering block '${block[templateKey]}'.`);
-		let render = template.content;
-		render = render.replace(/\[\[(\w+)\]\]/g, (w, key) => {
-			//recursive child rendering
-			if((key === childrenKey) && (childrenKey in block)) {
-				let children = new String();
-				for(const child of block[childrenKey]) {
-					children += this.renderBlock(child);
-				}
-				return children;
-			}
-			//other tags
-			else if(key in block) {
-				if(Array.isArray(block[key])) {
-					return this.arraySum(block[key]);
-				}
-				return block[key];
-			}
-			return "";
-		});
-		//add css stylesheet to the global cache
-		let css = this.stylesheets.fetch(template.id);
-		if(css !== 1) {
-			this.usedCSS.store(css);
-		}
-		return render;
-	}
-	
-	renderPage(pagedata) {
-		//load page data
-		let file = new File(pagedata);
-		let jsonContent = file.json();
-		if(jsonContent === 1) {
-			return "";
-		}
-		//check for basic pagedata validity
-		if(!("qw_pagedata" in jsonContent) || !Array.isArray(jsonContent.qw_pagedata)) {
-			console.log(
-			`Page data '${pagedata}' could not be loaded:\n` +
-			"Page data does not contain a 'qw_pagedata' array."
-			);
-			return "";
-		}
-		//start rendering every page block
-		let bodyRender = new String();
-		for(const block of jsonContent.qw_pagedata) {
-			bodyRender += this.renderBlock(block);
-		}
-		//create embedded css stylesheet
-		let embeddedCSS = new String('<style type="text/css">');
-		let baseStyle = this.stylesheets.fetch("qw_html_base");
-		if(baseStyle !== 1) {
-			this.usedCSS.store(baseStyle);
-		}
-		for(const sheet of this.usedCSS.content) {
-			let css = sheet.content;
-			css = css.replace(/\n|\t/g, () => {
-				return "";
-			});
-			embeddedCSS += css;
-		}
-		embeddedCSS += "</style>";
-		//try finding the document template, if not found use default
-		if(this.templates.fetch("qw_html_base") === 1) {
-			this.templates.store({
-				id: "qw_html_base",
-				content: defaultDoc
-			});
-		}
-		//insert all the elements into a document template
-		let pageRender = this.renderBlock({
-			qw_template: "qw_html_base",
-			qw_style: embeddedCSS,
-			qw_body: bodyRender
-		});
-		return pageRender + `<!-- Webpage generated using Quikweb ${version} -->`;
-	}
-	
-}
-
-/*
-	Main code
-*/
-console.log(`Quikweb ${version}`);
-if(args.length < 4) {
-	console.log(usageInfo);
+console.log(`Quikweb Renderer ${qwVersion}`);
+if(args.length < 4 || args.length > 5) {
+	console.log(qwUsage);
 	return;
 }
-console.log(
-`[CONFIG]\n\tTemplate pack: '${args[2]}'` +
-`\n\tPage data:     '${args[3]}'`
-);
-console.log("[BUILD LOG]");
-//filesystem stuff
+console.log(`[INFO]\n\tStarting build of '${args[3]}'`);
+
 try {
-	fs.mkdirSync(outputdir);
-} catch(exc) {
-	console.log(
-	`Failed to create '${outputdir}' directory:\n${exc}`
-	);
+	fs.mkdirSync(qwOutDir);
 }
-//output phase
+catch(exc) {
+	console.log(`\tFailed to create '${qwOutDir}' directory\n\t${exc}`);
+}
+
 let worker = new Builder();
-worker.importTemplateRepo(args[2]);
-const outputfile = outputdir + "/index.html";
-let output = new File(outputfile);
-if(output.write(worker.renderPage(args[3])) === 1) {
-	console.log("[OUTPUT]\n\tBuild failed!");
+let pageJson;
+
+console.log(`[IMPORT]\n\tImporting components from '${args[2]}'`);
+try {
+	worker.importComponentDir(args[2]);
+}
+catch (exc) {
+	finalizeBuild({ error: exc }, worker);
 	return;
 }
-console.log(
-"[OUTPUT]\n\tBuild succeeded!" +
-`\n\tOutput written to: '${outputfile}'`
-);
+
+console.log(`\tReading webpage file '${args[3]}'`);
+try {
+	pageJson = JSON.parse(fs.readFileSync(args[3]));
+}
+catch (exc) {
+	finalizeBuild({ error: exc }, worker);
+	return;
+}
+
+if (Object.hasOwn(pageJson, "qw_page") === false || Array.isArray(pageJson.qw_page) === false) {
+	finalizeBuild({ error: `Page data '${args[3]}' is not a valid page file` }, worker);
+	return;
+}
+
+let bodyRender = new String();
+for (const block of pageJson.qw_page) {
+	try {
+		bodyRender += worker.renderBlock(block);
+	}
+	catch (exc) {
+		finalizeBuild({ error: exc }, worker);
+		return;
+	}
+}
+
+
+let baseStyle = worker.cssImports.fetch("qw_html");
+if (!baseStyle.error) {
+	worker.cssCollector.store(baseStyle);
+}
+
+let embeddedCSS = new String();
+for (const sheet of worker.cssCollector.content) {
+	let css = sheet.content;
+	css = css.replace(/\n|\t/g, () => { return ""; });
+	embeddedCSS += css;
+}
+
+let styleEmbed = worker.renderBlock({
+	qw_template: "tag",
+	tag: "style",
+	content: embeddedCSS
+})
+let pageRender = worker.renderBlock({
+	qw_template: "qw_html",
+	qw_style: styleEmbed,
+	qw_body: bodyRender
+});
+pageRender += worker.renderBlock({
+	qw_template: "qw_htmlinfo"
+});
+
+try {
+	fs.writeFileSync(qwOutFile, pageRender);
+}
+catch (exc) {
+	finalizeBuild({ error: exc }, worker);
+	return;
+}
+
+finalizeBuild({ success: true }, worker);
