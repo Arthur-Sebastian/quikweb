@@ -2,7 +2,9 @@
 ### Uncomplicated, JSON based web page framework and renderer.
 
 ## Rationale
-This project is meant to help in quick website creation and design with little to no initial configuration. Misplaced `<div>` tags that break the layout or confusing style sheet dependencies will be a pain long gone. This tool also helps in managing your page components and styling in an organized manner.
+This project is meant to help in quick website creation and design with very little initial
+configuration. This tool also helps in managing your page components and styling in an
+organized manner.
 
 ## Features
 * template substitution engine
@@ -26,7 +28,9 @@ Otherwise, you can also get the nightly version from the `devel` branch by:
 npm install arthur-sebastian/quikweb#devel
 ```
 
-> **OPTIONAL EXAMPLES:** To get started with your project quicker, you can also install `quikweb-new-project` package to help set up an example project that is ready to edit:
+> 📙 **OPTIONAL EXAMPLES:**<br>
+To get started with your project quicker, you can also install `quikweb-new-project` package to help
+set up an example project that is ready to edit:
 
 ```console
 npm install arthur-sebastian/quikweb-new-project
@@ -34,7 +38,8 @@ npm install arthur-sebastian/quikweb-new-project
 
 ## Quick start
 
-In order to build a web page using a source file, execute the following command in the root directory of your project:
+In order to build a web page using a source file, execute the following command in the root
+directory of your project:
 
 ```console
 npx quikweb <components-dir> <page-source>
@@ -45,16 +50,18 @@ npx quikweb <components-dir> <page-source>
 | components-dir | component directory path   |
 | page-source    | page source JSON file path |
 
-A directory named `render` containing your rendered `index.html` file will be created in the project root as a result.
+A directory named `render` containing your rendered `index.html` file will be created in the project
+root as a result.
 
 ## Tutorial
 
-To learn how to use Quikweb, following the [tutorial](/docs/README.md) is recommended. It contains many examples and useful notes on particular topics.
+To learn how to use Quikweb, following the [tutorial](/docs/TUTORIAL.md) is recommended. It contains
+many examples and useful notes on particular topics.
 
 ## Roadmap
 
 - better handling of file paths
-- automated resource (e.g. image) bunding
+- automated resource bundling
 - support for JavaScript enabled components
 - improved tutorial
 - web app builder
