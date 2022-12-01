@@ -85,7 +85,7 @@ if (Object.hasOwn(pageJson, "qw_page") === false || Array.isArray(pageJson.qw_pa
 	return;
 }
 
-let bodyRender = new String();
+let bodyRender = "";
 for (const block of pageJson.qw_page) {
 	try {
 		bodyRender += worker.renderBlock(block);
@@ -102,7 +102,7 @@ if (!baseStyle.error) {
 	worker.cssCollector.store(baseStyle);
 }
 
-let embeddedCSS = new String();
+let embeddedCSS = "";
 for (const sheet of worker.cssCollector.content) {
 	let css = sheet.content;
 	css = css.replace(/\n|\t/g, () => { return ""; });

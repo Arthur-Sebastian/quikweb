@@ -90,7 +90,7 @@ function renderBlock(block)
 		}
 		/* recursive rendering */
 		if (qwTag in block) {
-			let tag = new String();
+			let tag = "";
 			if (Array.isArray(block[qwTag])) {
 				for (const child of block[qwTag]) {
 					tag += this.renderBlock(child);
