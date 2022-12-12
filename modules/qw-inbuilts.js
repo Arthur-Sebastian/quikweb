@@ -15,16 +15,16 @@ const qwHtml =
 </html>`;
 
 const qwTag =
-`<[[tag]]>
+`<[[tag]] [[attributes]]>
 	[[content]]
 </[[tag]]>`;
 
 const qwTagVoid =
-`<[[tag]]>`;
+`<[[tag]] [[attributes]]>`;
 
-const qwInfo =
-`<!--Built using Quikweb-->
-<!--https://github.com/arthur-sebastian/quikweb-->`;
+const qwInfo = `
+<!-- Built using Quikweb -->
+<!-- https://github.com/arthur-sebastian/quikweb -->`;
 
 module.exports = {
 	components: [
