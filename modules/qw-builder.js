@@ -19,14 +19,18 @@ function importFile(path, id, type)
 		id: id,
 		content: content
 	}
+	let res;
 	if (type === "html" || type === "htm") {
-		this.htmlImports.store(item);
+		res = this.htmlImports.store(item);
+		if(res && res.warning) {
+			throw `${res.warning} on '${item.id}'`;
+		}
 	}
 	else if (type === "css") {
-		this.cssImports.store(item);
-	}
-	else {
-		throw "UnknownFileType";
+		res = this.cssImports.store(item);
+		if(res && res.warning) {
+			throw `${res.warning} on '${item.id}'`;
+		}
 	}
 }
 
@@ -41,10 +45,14 @@ function importComponentDir(directory)
 	catch (exc) {
 		throw exc;
 	}
+	if (!fileList.length) {
+		return;
+	}
 
 	for (const file of fileList) {
 		let path = `${directory}/${file}`;
 		if (fs.lstatSync(path).isDirectory()) {
+			this.importComponentDir(path);
 			continue;
 		}
 		let name = file.replace(/\.[^.]*$/g, "");

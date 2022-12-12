@@ -5,7 +5,7 @@ function store(newElement)
 	}
 
 	if(this.content.find(element => element.id === newElement.id)) {
-		return;
+		return {warning: "DuplicateObject"};
 	}
 	else {
 		this.content.push(newElement);
