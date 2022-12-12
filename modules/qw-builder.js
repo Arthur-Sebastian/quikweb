@@ -86,7 +86,7 @@ function renderBlock(block)
 			return "";
 		}
 		else {
-			this.warningCollector.push(`Using inbuild component '${componentType}'`);
+			this.warningCollector.push(`Using inbuilt component '${componentType}'`);
 		}
 	}
 
